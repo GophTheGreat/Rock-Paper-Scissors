@@ -18,13 +18,14 @@ function playerPlay(){
   if (input === "rock" || input === "paper" || input === "scissors")
     return input;
   else{
-    while(input != "rock" || input != "paper" || input != "scissors")
+    while(input != "rock" && input != "paper" && input != "scissors")
       input = prompt("It's gotta be rock, paper, or scissors, dude.").toLowerCase();
     return input;
   }
 };
 
 function playRound(playerSelection, computerSelection){
+  console.log(`You played ${playerSelection}! Computer played ${computerSelection}!`);
   if (playerSelection === computerSelection){
     console.log("Draw!");
     return 0;
@@ -64,7 +65,7 @@ function playRound(playerSelection, computerSelection){
     }
     if (computerSelection === "rock")
     {
-      declareRoundlose();
+      declareRoundLose();
       return 0;
     }
   }
@@ -72,13 +73,13 @@ function playRound(playerSelection, computerSelection){
     console.log("This should never fire D:");
     return 0;
   }
-};
+}
 
-function declareRoundWin{
+function declareRoundWin(){
   console.log("You won this round!");
 };
 
-function declareRoundLose{
+function declareRoundLose(){
   console.log("You lost this round!");
 };
 
@@ -99,10 +100,11 @@ function game(){
   let playCount = 0;
   let winCount = 0;
   for (playCount; playCount < 5; ++playCount){
-    winCount += playRound(); 
+    winCount += playRound(playerPlay(), computerPlay()); 
   }
   console.log(`You won ${winCount} times!`)
 }
 
-console.log(playRound(playerPlay(), computerPlay()));
+//console.log(playRound(playerPlay(), computerPlay()));
+game();
 // testCompPlay();
