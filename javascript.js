@@ -29,8 +29,48 @@ function playRound(playerSelection, computerSelection){
     console.log("Draw!");
     return 0;
   }
+  else if(playerSelection === "rock")
+  {
+    if (computerSelection === "paper")
+    {
+      declareRoundLose();
+      return 0;
+    }
+    if (computerSelection === "scissors")
+    {
+      declareRoundWin();
+      return 1;
+    }
+  }
+  else if(playerSelection === "paper")
+  {
+    if (computerSelection === "rock")
+    {
+      declareRoundWin();
+      return 1;
+    }
+    if (computerSelection === "scissors")
+    {
+      declareRoundLose();
+      return 0;
+    }
+  }
+  else if(playerSelection === "scissors")
+  {
+    if (computerSelection === "paper")
+    {
+      declareRoundWin();
+      return 1;
+    }
+    if (computerSelection === "rock")
+    {
+      declareRoundlose();
+      return 0;
+    }
+  }
   else{
-    return "Not draw!";
+    console.log("This should never fire D:");
+    return 0;
   }
 };
 
@@ -56,7 +96,12 @@ function testCompPlay(){
 };
 
 function game(){
-  
+  let playCount = 0;
+  let winCount = 0;
+  for (playCount; playCount < 5; ++playCount){
+    winCount += playRound(); 
+  }
+  console.log(`You won ${winCount} times!`)
 }
 
 console.log(playRound(playerPlay(), computerPlay()));
