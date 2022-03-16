@@ -16,6 +16,10 @@ body{
   padding: 60px 0;
   width: 1000px;
   justify-content: center;
+  color: darkolivegreen;
+  font-size: 25px;
+  font-weight: 50;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .middle{
@@ -34,8 +38,6 @@ body{
   letter-spacing: 4px;
   width: 1000px;
 }
-
-
 
 button{
  background-color: teal;
