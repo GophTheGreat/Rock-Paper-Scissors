@@ -1,4 +1,18 @@
-console.log("Hello world!")
+let playCount = 0;
+let winCount = 0;
+let computerWinCount = 0;
+
+const buttons = document.querySelectorAll('button');
+
+let displayWins = document.createElement('div');
+displayWins.textContent = `Press a button to begin!`
+displayWins.setAttribute('style', 'white-space: pre;');
+
+const displayWinsBox = document.querySelector('.wins');
+
+displayWinsBox.append(displayWins);
+
+console.log(buttons);
 
 function computerPlay(){
   let result =  Math.floor(Math.random() * 3 + 1);
@@ -13,6 +27,8 @@ function computerPlay(){
 
 };
 
+
+/*
 function playerPlay(){
   let input = prompt("Rock, paper, or scissors?").toLowerCase();
   if (input === "rock" || input === "paper" || input === "scissors")
@@ -23,24 +39,22 @@ function playerPlay(){
     return input;
   }
 };
+*/
 
 function playRound(playerSelection, computerSelection){
   console.log(`You played ${playerSelection}! Computer played ${computerSelection}!`);
   if (playerSelection === computerSelection){
     console.log("Draw!");
-    return 0;
   }
   else if(playerSelection === "rock")
   {
     if (computerSelection === "paper")
     {
       declareRoundLose();
-      return 0;
     }
     if (computerSelection === "scissors")
     {
       declareRoundWin();
-      return 1;
     }
   }
   else if(playerSelection === "paper")
@@ -48,12 +62,10 @@ function playRound(playerSelection, computerSelection){
     if (computerSelection === "rock")
     {
       declareRoundWin();
-      return 1;
     }
     if (computerSelection === "scissors")
     {
       declareRoundLose();
-      return 0;
     }
   }
   else if(playerSelection === "scissors")
@@ -61,26 +73,50 @@ function playRound(playerSelection, computerSelection){
     if (computerSelection === "paper")
     {
       declareRoundWin();
-      return 1;
     }
     if (computerSelection === "rock")
     {
       declareRoundLose();
-      return 0;
     }
   }
   else{
     console.log("This should never fire D:");
-    return 0;
+    return;
   }
+  playCount++;
+  displayWins.textContent = 
+  `Play count: ${playCount} | Player Wins: ${winCount} | Computer Wins: ${computerWinCount}`
+
+
+  if(winCount == 5)
+  {
+    console.log("hi")
+    displayWins.textContent += 
+    `\r\nYou win! Game over! Play moare?!`
+    winCount = 0;
+    computerWinCount = 0;
+  }
+
+  if(computerWinCount == 5)
+  {
+    displayWins.textContent += 
+    `\r\nYou lost! Game over! Play moare?!`
+    winCount = 0;
+    computerWinCount = 0;
+  }
+
+
+  
 }
 
 function declareRoundWin(){
   console.log("You won this round!");
+  winCount++;
 };
 
 function declareRoundLose(){
   console.log("You lost this round!");
+  computerWinCount++;
 };
 
 function testCompPlay(){
@@ -96,15 +132,22 @@ function testCompPlay(){
   console.log(computerPlay());
 };
 
+
 function game(){
-  let playCount = 0;
-  let winCount = 0;
-  for (playCount; playCount < 5; ++playCount){
-    winCount += playRound(playerPlay(), computerPlay()); 
+  while(winCount == 5 || computerWinCount == 5)
+  {
+    displayWins.textContent = 
+    `Game over! Play moare?!`
   }
-  console.log(`You won ${winCount} times!`)
+
 }
 
+
+buttons.forEach(button => button.addEventListener("click", () => {
+  playRound(button.textContent.toLowerCase(), computerPlay())
+}));
+
 //console.log(playRound(playerPlay(), computerPlay()));
-//game();
+
+
 // testCompPlay();
