@@ -27,20 +27,6 @@ function computerPlay(){
 
 };
 
-
-/*
-function playerPlay(){
-  let input = prompt("Rock, paper, or scissors?").toLowerCase();
-  if (input === "rock" || input === "paper" || input === "scissors")
-    return input;
-  else{
-    while(input != "rock" && input != "paper" && input != "scissors")
-      input = prompt("It's gotta be rock, paper, or scissors, dude.").toLowerCase();
-    return input;
-  }
-};
-*/
-
 function playRound(playerSelection, computerSelection){
   console.log(`You played ${playerSelection}! Computer played ${computerSelection}!`);
   if (playerSelection === computerSelection){
