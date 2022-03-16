@@ -5,11 +5,33 @@
 
 body{
   flex-direction: column;
+  align-items: center;
   min-height: 100vh;
   min-width: 100vw;
 }
 
 .top, .middle{
+  background-color: red;
+  padding: 60px 0;
+  
+  width: 1000px;
   justify-content: center;
-  align-items: center; 
+}
+
+.footer{
+  justify-content: center;
+  align-items: center;
+  background: #1F2937;
+  color: white;
+  padding: 70px;
+  letter-spacing: 4px;
+  width: 1000px;
+}
+
+
+
+button{
+ background-color: teal;
+ padding: 20px, 100px;
+ spacing: 10px;
 }
