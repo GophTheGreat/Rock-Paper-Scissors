@@ -1,4 +1,5 @@
-# rock-paper-scissors
-Odin Project #3
+# Rock Paper Scissors
 
-Showcasing basic javascript.
+The Odin Project #3
+
+Simple hotseat rock-paper-scissors game. Showcases basic javascript logic.
